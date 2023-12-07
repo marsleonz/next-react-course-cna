@@ -1,14 +1,18 @@
 import Link from "next/link";
 import postgres from "postgres";
 
-const sql = postgres(process.env.POSTGRES_URL!);
-
 type Quiz = {
   Quiz_id: number;
   Quiz_name: string;
 };
 async function Quizzes() {
-  const quizzes: Quiz[] = await sql`SELECT * FROM quizzes`;
+  const quizzes = [
+    { Quiz_id: 1, Quiz_name: "Math Quiz" },
+    { Quiz_id: 2, Quiz_name: "History Quiz" },
+    { Quiz_id: 3, Quiz_name: "Science Quiz" },
+    { Quiz_id: 4, Quiz_name: "English Quiz" },
+    // Add more dummy data as needed
+  ];
   return (
     <ul>
       {quizzes.map((quiz) => (
